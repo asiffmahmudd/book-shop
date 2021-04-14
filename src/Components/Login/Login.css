@@ -1,0 +1,17 @@
+.forgot{
+    color: slateblue;
+}
+
+.form-container{
+    border: 1px solid rgb(190, 190, 190);
+    padding: 2rem 3.5rem !important;
+}
+
+form input::placeholder{
+    font-weight: 700;
+}
+
+form #email, form #password, form #confirmPassword, form #name{
+    padding: 0;
+}
+

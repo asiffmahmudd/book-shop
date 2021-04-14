@@ -1,0 +1,26 @@
+header .navbar-brand img{
+    width: 175px;
+}
+
+header nav .login-btn{
+    width: 100px;
+}
+
+header nav li{
+    margin-right: 2rem;
+}
+
+header .navbar-nav{
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 591px){
+    header nav li{
+        margin: 0;
+    }
+
+    header nav .nav-link{
+        text-align: center;
+    }
+}

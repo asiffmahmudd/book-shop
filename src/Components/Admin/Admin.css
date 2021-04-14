@@ -1,0 +1,25 @@
+
+html, body, #root, .admin, .admin .row, .admin .sidebar-container{
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.admin{
+    background-color: ghostwhite;
+}
+
+.admin .option-title{
+    background-color: white;
+}
+
+.admin .page-title{
+    font-weight: 700;
+}
+
+
+@media (max-width:991px) {
+    .admin .page-title{
+        text-align: center;
+    }   
+}

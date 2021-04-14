@@ -1,0 +1,32 @@
+.addbook form label{
+    font-weight: bold;
+}
+
+.addbook form .btn-upload{
+    background-color: rgba(104, 89, 202, 0.247) !important;
+    color: slateblue !important;
+    width: 150px;
+    border-radius: 5px !important;
+    border: 1px solid slateblue;
+}
+
+.addbook .input-container {
+    background: white;
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: 25px;
+}
+
+.error{
+    color: red;
+}
+
+.addbook .btn-submit{
+    border-radius: 5px !important;
+    margin-right: 35px;
+}
+
+.addbook #photo{
+    opacity: 0;
+    width: 1px;
+}

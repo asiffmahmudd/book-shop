@@ -1,0 +1,15 @@
+
+.btn{
+    color: white !important;
+    background: slateblue !important;
+    border-radius: 0 !important;
+}
+
+
+.text-slateblue{
+    color: slateblue;
+}
+
+.search .search-btn{
+    width: 100px;
+}

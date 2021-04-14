@@ -1,0 +1,33 @@
+.cstm-seperator{
+    position: relative;
+}
+
+.or-text{
+    background: white;
+    padding: 0 5px;
+    position: absolute;
+    top: -14px;
+    left: 49%;
+}
+
+.facebook, .google{
+    position: relative;
+    border-radius: 30px;
+    padding: 8px;
+}
+
+.facebook img, .google img{
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    left: 6px;
+}
+
+.facebook p, .google p{
+    margin: 0;
+}
+
+.facebook:hover, .google:hover{
+    cursor: pointer;
+    background-color: ghostwhite;
+}

@@ -1,0 +1,36 @@
+.sidebar{
+    height: 100%;
+    background-color:rgb(12, 12, 56);
+}
+
+
+.sidebar p{
+    color: white;
+}
+
+.sidebar .option-item:hover{
+    background-color: midnightblue;
+}
+
+.sidebar .option-item{
+    margin-bottom: 0;
+    padding-left: 20% !important;
+    cursor: pointer;
+}
+
+.sidebar .fa-icon{
+    width: 1rem;
+}
+
+@media (max-width: 991px) {
+    .sidebar h3, .sidebar .option-item{
+        text-align: center;
+    }
+    .sidebar .option-item{
+        padding-left: unset !important;
+    }
+
+    html, body, #root, .admin, .admin .row, .admin .sidebar-container{
+        height: unset !important;
+    }
+}
