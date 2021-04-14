@@ -5,6 +5,10 @@
     border-radius: 0 !important;
 }
 
+.btn:hover{
+    background-color: rgb(94, 75, 219) !important;
+}
+
 
 .text-slateblue{
     color: slateblue;
@@ -12,4 +16,8 @@
 
 .search .search-btn{
     width: 100px;
+}
+
+.search #book-search{
+    background: #ededed;
 }

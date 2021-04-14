@@ -17,14 +17,55 @@ const schema = yup.object().shape({
 
 const AddBook = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
       });
 
     const onSubmit = data => {
-        // if(data.photo.)
-        console.log(data);
-    };
+        
+        const imageData = new FormData();
+        imageData.set('key', '0c9c52f3c2c70e376333024c7dd177e2');
+        imageData.append('image', data.photo[0]);
+        document.getElementById('spinner').style.display = 'block';
+
+        fetch('https://api.imgbb.com/1/upload', {
+            method: 'POST',
+            body: imageData
+        })
+        .then(response => response.json())
+        .then(result => {
+            const book = {
+                name : data.bookName,
+                author : data.author,
+                price : data.price,
+                image : result.data.display_url
+            }
+            submitData(book);
+        })
+        .catch(error => {
+            alert(error)
+        })
+    }
+
+    const submitData = (book) => {
+        console.log(book);
+        fetch('http://localhost:4000/addbook', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(book)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data){
+                document.getElementById('spinner').style.display = 'none';
+                alert("Book added successfully");
+                reset();
+            }
+        })
+
+    }
 
     const handleClick = () => {
         document.getElementById('photo').click();
@@ -60,6 +101,11 @@ const AddBook = () => {
                 </div>
                 <button type="submit" className="btn btn-submit float-right">Submit</button>
             </form>
+            <div className="text-center" id="spinner" style={{'display':'none'}}>
+                <div className="spinner-border text-slateblue" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </div>
         </div>
     );
 };

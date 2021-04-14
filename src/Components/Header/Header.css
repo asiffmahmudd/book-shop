@@ -10,6 +10,10 @@ header nav li{
     margin-right: 2rem;
 }
 
+header nav li a{
+    font-weight: 700;
+}
+
 header .navbar-nav{
     display: flex;
     align-items: center;

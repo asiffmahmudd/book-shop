@@ -1,0 +1,28 @@
+.books .card{
+    border-radius: 25px;
+}
+
+.books .card .img-container img{
+    padding: 2rem;
+    background-color: lightgray;
+    border-radius: 25px;
+    height: 400px;
+}
+
+.books .card .img-container{
+    padding: 1.25rem;
+}
+
+.books .card .card-body{
+    padding-top: 0;
+}
+
+.books .card .price-buy span{
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.books .card .buy-btn{
+    width: 120px !important;
+    border-radius: 6px !important;
+}
