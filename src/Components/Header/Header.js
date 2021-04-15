@@ -1,9 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react/cjs/react.development';
+import { UserContext } from '../../App';
+import { signout } from '../../firebaseManager';
 import logo from '../../img/Logo.png';
 import './Header.css';
 
 const Header = () => {
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
+    const handleLogout = () =>{
+        signout()
+        .then(res => {
+            if(res){
+                setLoggedInUser({});
+            }
+        })
+    }
+
     return (
         <header>
             <div className="container">
@@ -26,9 +41,24 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="#">Deals</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/login"><button className="btn login-btn">Login</button></Link>
-                            </li>
+                            {
+                                loggedInUser?.email &&
+                                <>
+                                    <li className="nav-item">
+                                        <span className="nav-link">{loggedInUser.name}</span>
+                                    </li>
+                                    <li className="nav-item">
+                                        <button onClick={handleLogout} className="btn login-btn">Logout</button>
+                                    </li>
+                                </>
+                            }
+                            {
+                                !loggedInUser?.email &&
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/login"><button className="btn login-btn">Login</button></Link>
+                                </li>
+                            }
+                            
                         </ul>
                     </div>
                 </nav>

@@ -4,6 +4,7 @@ import './Book.css'
 
 const Book = (props) => {
     const {name, author, price, image} = props.book.book;
+    
     return (
         <div className="col-md-4 mt-3 mb-3">
             <div className="card shadow border-0">
@@ -17,7 +18,7 @@ const Book = (props) => {
                     <small className="card-text mb-2 d-block">{author}</small>
                     <div className="price-buy">
                         <span className="text-slateblue">${price}</span>
-                        <Link to="#" className="btn buy-btn float-right">Buy Now</Link>
+                        <Link to={"/checkout/"+props.book._id} className="btn buy-btn float-right">Buy Now</Link>
                     </div>
                     
                 </div>

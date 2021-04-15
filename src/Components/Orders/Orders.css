@@ -1,0 +1,13 @@
+.orders .single-order{
+    padding: 1rem;
+    background: ghostwhite;
+    border-radius: 10px;
+}
+
+.orders .card{
+    flex-direction: unset !important;
+}
+
+.orders .details{
+    cursor: pointer;
+}

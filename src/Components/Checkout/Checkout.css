@@ -1,0 +1,12 @@
+.checkout thead th{
+    border-top: none;
+}
+
+.checkout tbody tr:last-child {
+    border-bottom: none;
+}
+
+.checkout .table-container{
+    border-radius: 35px;
+    padding: 2rem;
+}

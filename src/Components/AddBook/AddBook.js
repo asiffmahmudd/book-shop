@@ -48,7 +48,6 @@ const AddBook = () => {
     }
 
     const submitData = (book) => {
-        console.log(book);
         fetch('http://localhost:4000/addbook', {
             method: 'POST',
             headers: {

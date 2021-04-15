@@ -1,8 +1,12 @@
 
 html, body, #root, .admin, .admin .row, .admin .sidebar-container{
-    height: 100%;
     margin: 0 !important;
     padding: 0 !important;
+    height: 100% !important;
+}
+
+#root, .admin, .admin .row, .admin .sidebar-container{
+    height: 100% !important;
 }
 
 .admin{

@@ -1,0 +1,74 @@
+.manage-books .table-container{
+    background: white;
+    border-radius: 25px;
+}
+
+.manage-books thead{
+    background-color: ghostwhite !important;
+}
+
+.manage-books table th:first-child{
+    border-radius:10px 0 0 10px;
+}
+  
+.manage-books table th:last-child{
+    border-radius:0 10px 10px 0;
+}
+
+.manage-books table .edit, .manage-books table .delete{
+    padding: 5px 7px;
+    border-radius: 5px;
+}
+
+.manage-books table .delete{
+    background-color: firebrick;
+}
+
+.manage-books table .edit{
+    background-color:forestgreen;
+
+}
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	.manage-books table, .manage-books thead, .manage-books tbody, .manage-books th, .manage-books td, .manage-books tr { 
+		display: block; 
+	}
+	
+	.manage-books thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	.manage-books tr { 
+        background-color: ghostwhite;
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+	
+	.manage-books td { 
+		border: none;
+		position: relative;
+		padding-left: 50% !important; 
+	}
+	
+	.manage-books td:before { 
+		position: absolute;
+		top: 13px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	.manage-books td:nth-of-type(1):before { content: "Book Name"; }
+	.manage-books td:nth-of-type(2):before { content: "Author Name"; }
+	.manage-books td:nth-of-type(3):before { content: "Price"; }
+	.manage-books td:nth-of-type(4):before { content: "Action"; }
+}

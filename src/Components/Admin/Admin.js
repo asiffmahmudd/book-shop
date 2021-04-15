@@ -10,6 +10,7 @@ const Admin = () => {
 
     const changeTitle = (selectedTitle) => {
         setTitle(selectedTitle);
+        document.body.style.height = 'unset !important';
     }
 
     return (
