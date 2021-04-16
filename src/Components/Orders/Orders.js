@@ -33,7 +33,7 @@ const Orders = () => {
                     </div>
                     <div className="row">
                         {
-                            orders.length == 0 && 
+                            orders.length === 0 && 
                             <h1 className="col-md-12 text-center mt-5">No orders found</h1>
                         }
                         {
