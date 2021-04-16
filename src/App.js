@@ -8,7 +8,7 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import Admin from './Components/Admin/Admin';
-import { createContext, useState } from 'react/cjs/react.development';
+import { createContext, useState } from "react";
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Checkout from './Components/Checkout/Checkout';
 import Orders from './Components/Orders/Orders';
@@ -20,7 +20,7 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
 
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+    <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
       <Router>
         <Switch>
           <Route path="/home">
