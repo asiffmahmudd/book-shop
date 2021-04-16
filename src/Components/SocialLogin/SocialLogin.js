@@ -3,7 +3,7 @@ import './SocialLogin.css';
 import google from '../../img/google.png';
 import facebook from '../../img/facebook.png';
 import { signin } from '../../firebaseManager';
-import { useContext } from 'react/cjs/react.development';
+import { useContext } from 'react';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
 

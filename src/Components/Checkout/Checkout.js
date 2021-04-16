@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router';
-import { useContext, useState } from 'react/cjs/react.development';
+import { useContext, useState } from "react";
 import { UserContext } from '../../App';
 import Header from '../Header/Header';
 import './Checkout.css';

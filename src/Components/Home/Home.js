@@ -12,6 +12,11 @@ const Home = () => {
         setSearch(event.target.value);
     }
 
+    const handleClick = () => {
+        console.log(document.getElementById('book-search').value);
+        setSearch(document.getElementById('book-search').value);
+    }
+
     useEffect( () => {
         document.getElementById('spinner').style.display = 'block';
         let url = "";
@@ -39,7 +44,7 @@ const Home = () => {
                         <div className="input-group col-md-5 mx-auto">
                             <input type="search" id="book-search" onChange={handleSearch} className="form-control rounded-0" placeholder="Search Book" aria-label="Search"
                                 aria-describedby="search-addon" />
-                            <button type="button" className="btn search-btn rounded-0">Search</button>
+                            <button type="button" onClick={handleClick} className="btn search-btn rounded-0">Search</button>
                         </div>
                     </div>
                 </div>
