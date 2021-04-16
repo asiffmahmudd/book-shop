@@ -46,7 +46,7 @@ const ManageBooks = () => {
                 </div>
             </div>
             {
-                books.length == 0 &&
+                books.length === 0 &&
                 <div className="text-center">
                     <h1>No books available</h1>
                 </div>
