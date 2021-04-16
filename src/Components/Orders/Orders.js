@@ -12,7 +12,7 @@ const Orders = () => {
 
     useEffect(() => {
         document.getElementById('spinner').style.display = 'block';
-        fetch(`http://localhost:4000/orders/${loggedInUser.email}`)
+        fetch(`https://book--shop.herokuapp.com/orders/${loggedInUser.email}`)
         .then(res => res.json())
         .then(data => {
             document.getElementById('spinner').style.display = 'none';

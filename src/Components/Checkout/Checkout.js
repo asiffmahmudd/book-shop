@@ -18,7 +18,7 @@ const Checkout = () => {
             order: book,
             date: new Date()
         }
-        fetch('http://localhost:4000/placeOrder/', {
+        fetch('https://book--shop.herokuapp.com/placeOrder/', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +36,7 @@ const Checkout = () => {
     }
     
     useEffect(() => {
-        fetch(`http://localhost:4000/checkout/${id}`)
+        fetch(`https://book--shop.herokuapp.com/checkout/${id}`)
         .then(res => res.json())
         .then(data => {
             setBook(data[0].book);

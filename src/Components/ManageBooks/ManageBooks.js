@@ -11,7 +11,7 @@ const ManageBooks = () => {
 
     useEffect(() => {
         document.getElementById('spinner').style.display = 'block';
-        fetch('http://localhost:4000/books')
+        fetch('https://book--shop.herokuapp.com/books')
         .then(res => res.json())
         .then(data => {
             setBooks(data);
@@ -23,7 +23,7 @@ const ManageBooks = () => {
     const handleDelete = (id) => {
         setChange(false);
         document.getElementById('spinner').style.display = 'block';
-        fetch(`http://localhost:4000/book/${id}`,{
+        fetch(`https://book--shop.herokuapp.com/book/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())

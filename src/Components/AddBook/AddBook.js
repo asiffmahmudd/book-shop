@@ -48,7 +48,7 @@ const AddBook = () => {
     }
 
     const submitData = (book) => {
-        fetch('http://localhost:4000/addbook', {
+        fetch('https://book--shop.herokuapp.com/addbook', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

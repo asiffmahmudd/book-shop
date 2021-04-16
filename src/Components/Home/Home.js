@@ -16,10 +16,10 @@ const Home = () => {
         document.getElementById('spinner').style.display = 'block';
         let url = "";
         if(search === ""){
-            url = 'http://localhost:4000/books';
+            url = 'https://book--shop.herokuapp.com/books';
         }
         else{
-            url = `http://localhost:4000/book/${search}`;
+            url = `https://book--shop.herokuapp.com/book/${search}`;
         }
 
         fetch(url)
