@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { useContext, useState } from "react";
-import { UserContext } from '../../App';
 import Header from '../Header/Header';
 import './Checkout.css';
+import { useAuth } from '../../Context/AuthContext';
 
 const Checkout = () => {
 
     const [book, setBook] = useState({});
     const {id} = useParams();
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {loggedInUser} = useAuth();
     const history = useHistory();
 
     const saveOrder = () => {

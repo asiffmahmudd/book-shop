@@ -7,6 +7,7 @@ const Home = () => {
 
     const [books, setBooks] = useState([]);
     const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleSearch = (event) => {
         setSearch(event.target.value);
@@ -18,6 +19,7 @@ const Home = () => {
     }
 
     useEffect( () => {
+        setLoading(true);
         document.getElementById('spinner').style.display = 'block';
         let url = "";
         if(search === ""){
@@ -32,6 +34,7 @@ const Home = () => {
         .then(data => {
             setBooks(data);
             document.getElementById('spinner').style.display = 'none';
+            setLoading(false);
         })
     }, [search])
 
@@ -59,7 +62,7 @@ const Home = () => {
                     </div>
                     <div className="row">
                         {
-                            books.length === 0 && search.length > 0 &&
+                            !loading && books.length === 0 &&
                             <h1 className="col-md-12 text-center mt-5">Sorry, No book found</h1>
                         }
                         {

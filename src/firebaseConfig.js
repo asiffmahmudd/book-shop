@@ -1,10 +1,14 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyCPBH1ecqkMs9iptMGil02aUfocqWjO_B8",
-    authDomain: "book-shop-1e18e.firebaseapp.com",
-    projectId: "book-shop-1e18e",
-    storageBucket: "book-shop-1e18e.appspot.com",
-    messagingSenderId: "1065412186565",
-    appId: "1:1065412186565:web:0fce658cb8edf98badfbac"
-  };
+import firebase from "firebase/app"
+import "firebase/auth"
 
-export default firebaseConfig;
+const app = firebase.initializeApp({
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID
+})
+
+export const auth = app.auth()
+export default app

@@ -8,19 +8,16 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import Admin from './Components/Admin/Admin';
-import { createContext, useState } from "react";
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Checkout from './Components/Checkout/Checkout';
 import Orders from './Components/Orders/Orders';
+import { AuthProvider } from './Context/AuthContext';
 
-export const UserContext = createContext();
 
 function App() {
 
-  const [loggedInUser, setLoggedInUser] = useState({});
-
   return (
-    <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
+    <AuthProvider>
       <Router>
         <Switch>
           <Route path="/home">
@@ -46,7 +43,7 @@ function App() {
           </PrivateRoute>
         </Switch>
       </Router>
-    </UserContext.Provider>
+    </AuthProvider>
     
   );
 }

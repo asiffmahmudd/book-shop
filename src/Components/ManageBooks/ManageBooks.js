@@ -8,14 +8,17 @@ const ManageBooks = () => {
 
     const [books, setBooks] = useState([]);
     const [change, setChange] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         document.getElementById('spinner').style.display = 'block';
         fetch('https://book--shop.herokuapp.com/books')
         .then(res => res.json())
         .then(data => {
             setBooks(data);
             document.getElementById('spinner').style.display = 'none';
+            setLoading(false);
             console.log(data);
         })
     }, [change])
@@ -46,7 +49,7 @@ const ManageBooks = () => {
                 </div>
             </div>
             {
-                books.length === 0 &&
+                !loading && books.length === 0 &&
                 <div className="text-center">
                     <h1>No books available</h1>
                 </div>

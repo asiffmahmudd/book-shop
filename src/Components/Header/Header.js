@@ -1,22 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { UserContext } from '../../App';
 import { signout } from '../../firebaseManager';
 import logo from '../../img/Logo.png';
 import './Header.css';
+import { useAuth } from '../../Context/AuthContext';
 
 const Header = () => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
+    const {loggedInUser, logout} = useAuth();
     const handleLogout = () =>{
-        signout()
-        .then(res => {
-            if(res){
-                setLoggedInUser({});
-            }
-        })
+        logout();
     }
 
     return (
@@ -37,9 +30,6 @@ const Header = () => {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/admin">Admin</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="#">Deals</Link>
                             </li>
                             {
                                 loggedInUser?.email &&
