@@ -7,4 +7,4 @@
     <li>Buy books</li>
   </ul>
 </h1>
-<a href="https://book-shop-1e18e.web.app/" target="_blank"><h1>Click here to see live</h1></a>  
+<h1><a href="https://book-shop-1e18e.web.app/" target="_blank">Click here to see live</a></h1>
