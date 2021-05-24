@@ -3,6 +3,7 @@ import Book from '../Book/Book';
 import Cart from '../Cart/Cart';
 import Header from '../Header/Header';
 import './Home.css';
+import { useCart } from '../../Context/CartContext';
 
 const Home = () => {
 
@@ -15,7 +16,6 @@ const Home = () => {
     }
 
     const handleClick = () => {
-        console.log(document.getElementById('book-search').value);
         setSearch(document.getElementById('book-search').value);
     }
 
@@ -38,6 +38,42 @@ const Home = () => {
             setLoading(false);
         })
     }, [search])
+
+    let {cartProducts, setCartProducts} = useCart();
+    const [animationImage, setAnimationImage] = useState("");
+
+    const addItem = (book) => {
+        setAnimationImage(book.book.image)
+        const element = document.getElementById('animation-img')
+        element.style.display = 'block';
+        element.classList.add('cart-animation-img')
+
+        setTimeout(() => {
+            element.style.display = 'none';
+            element.classList.remove('cart-animation-img')
+        },1200)
+
+        let alreadyExists = false;
+        let l = cartProducts.length;
+        let newCartProducts = cartProducts.slice();
+
+        for(let i = 0; i < l; i++){
+            if(newCartProducts[i]._id === book._id){
+                alreadyExists = true;
+                newCartProducts[i].count++;
+                break;
+            }
+        }
+
+        
+        if(!alreadyExists){
+            book.count = 1;
+            newCartProducts = [...cartProducts, book];
+        }
+
+        setCartProducts(newCartProducts)
+        localStorage.setItem('books', JSON.stringify(newCartProducts));
+    }
 
     return (
         <>
@@ -62,12 +98,15 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="row">
+                        <img src={animationImage} id={"animation-img"}  style={{display: "none"}} alt="" />
                         {
                             !loading && books.length === 0 &&
                             <h1 className="col-md-12 text-center mt-5">Sorry, No book found</h1>
                         }
+                    
                         {
-                            books.map(book => <Book book={book} key={book._id}></Book>)
+                            
+                            books.map(book => <Book book={book} addItem={addItem} animationImage={animationImage} key={book._id}></Book>)
                         }
                     </div>
                 </div>

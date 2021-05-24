@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { signout } from '../../firebaseManager';
 import logo from '../../img/Logo.png';
 import './Header.css';
 import { useAuth } from '../../Context/AuthContext';

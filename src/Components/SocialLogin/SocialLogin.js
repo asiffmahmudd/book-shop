@@ -7,7 +7,7 @@ import { useAuth } from '../../Context/AuthContext';
 
 const SocialLogin = () => {
 
-    const {loggedInUser, loginWith} = useAuth();
+    const {loginWith} = useAuth();
     let history = useHistory();
     let location = useLocation();
 

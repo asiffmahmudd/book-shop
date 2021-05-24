@@ -19,8 +19,9 @@ const Orders = () => {
             setLoading(false);
             document.getElementById('spinner').style.display = 'none';
             setOrders(data);
+            console.log(data);
         })
-    }, [])
+    }, [loggedInUser.email])
 
     return (
         <>

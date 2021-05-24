@@ -1,21 +1,20 @@
-import React, { useEffect } from 'react';
-import { useHistory, useParams } from 'react-router';
-import { useContext, useState } from "react";
+import React from 'react';
+import { useHistory } from 'react-router';
 import Header from '../Header/Header';
 import './Checkout.css';
 import { useAuth } from '../../Context/AuthContext';
+import { useCart } from '../../Context/CartContext';
 
 const Checkout = () => {
 
-    const [book, setBook] = useState({});
-    const {id} = useParams();
     const {loggedInUser} = useAuth();
     const history = useHistory();
+    const {cartProducts, setCartProducts} = useCart();
 
     const saveOrder = () => {
         const orderData = {
             user: loggedInUser, 
-            order: book,
+            order: cartProducts,
             date: new Date()
         }
         fetch('https://book--shop.herokuapp.com/placeOrder/', {
@@ -28,6 +27,8 @@ const Checkout = () => {
         .then(res => res.json())
         .then(data => {
             if(data){
+                setCartProducts([]);
+                localStorage.clear()
                 alert("Order Placed successfully");
                 history.push('/');
             }
@@ -35,13 +36,8 @@ const Checkout = () => {
         
     }
     
-    useEffect(() => {
-        fetch(`https://book--shop.herokuapp.com/checkout/${id}`)
-        .then(res => res.json())
-        .then(data => {
-            setBook(data[0].book);
-        })
-    }, [])
+    let totalPrice = 0;
+    cartProducts.map(pr => totalPrice += pr.book.price*pr.count)
 
     return (
         <>
@@ -61,21 +57,29 @@ const Checkout = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>{book.name}</td>
-                                            <td>1</td>
-                                            <td>{book.price}</td>
-                                        </tr>
+                                        {
+                                            cartProducts.map(pr => {
+                                                return(
+                                                    <tr key={pr._id}>
+                                                        <td>{pr.book.name}</td>
+                                                        <td>{pr.count}</td>
+                                                        <td>{pr.book.price} x {pr.count}</td>
+                                                    </tr>
+                                                )
+                                            })
+                                            
+                                        }
+                                        
                                         <tr>
                                             <td>Total</td>
                                             <td></td>
-                                            <td>{book.price}</td>
+                                            <td>{totalPrice}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div className="mt-4">
-                                <button onClick={saveOrder} className="btn float-right rounded">Checkout</button>
+                                <button onClick={saveOrder} className="btn float-right rounded">Place Order</button>
                             </div>
                         </div>
                     </div>

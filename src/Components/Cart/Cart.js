@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import { useCart } from '../../Context/CartContext';
 import CartSingleItem from './CartSingleItem/CartSingleItem';
 import Fade from 'react-reveal/Fade';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
-    
+       
     let {cartProducts} = useCart();
 
     const [cartExpanded, setCartExpanded] = useState();
@@ -51,10 +52,15 @@ const Cart = () => {
                             </div>
                             {
                                 cartProducts.length > 0 &&
+                                <>
                                 <div className="pl-3 total-price mt-4">
                                     <strong>Total Price: </strong>
                                     <span className="float-right mr-3">{totalPrice}</span>
                                 </div>
+                                <div className="checkout-btn text-right mt-3 mr-3">
+                                    <Link to="/checkout" className="btn login-btn">Checkout</Link>
+                                </div>
+                                </>
                             }
                             {
                                 cartProducts.length === 0 &&

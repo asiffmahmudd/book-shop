@@ -10,18 +10,16 @@ const CartSingleItem = ({item}) => {
     const {cartProducts, setCartProducts} = useCart()
     const removeItem = (id) =>{
         const newCartProducts = cartProducts.filter(pr => pr._id !== id)
-        console.log(newCartProducts)
         setCartProducts(newCartProducts)
         localStorage.setItem("books", JSON.stringify(newCartProducts))
     }
 
     return (
-        
-        <Fade left cascade>
+        <Fade right cascade>
             <div className="cart-single-item mt-3 pl-3">
                 <div className="single-item-img">
                     <img src={item.book.image} alt="" />
-                    <FontAwesomeIcon icon={faTimes} className="hoverPointer" onClick={() => removeItem(item._id)} className="float-right mr-4" />
+                    <FontAwesomeIcon icon={faTimes} className="hoverPointer float-right mr-4" onClick={() => removeItem(item._id)} />
                 </div>
                 <div className="single-item-details">
                     <h6 className="item-name">{item.book.name}</h6> 
