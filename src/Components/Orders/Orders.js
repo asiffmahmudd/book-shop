@@ -41,8 +41,6 @@ const Orders = () => {
                         {
                             orders.map((order,index) => <OrderItem key={index} order={order} index={index}></OrderItem>)
                         }
-                        
-                        
                     </div>
                 </div>
             </div>  

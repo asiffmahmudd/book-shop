@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Book from '../Book/Book';
+import Cart from '../Cart/Cart';
 import Header from '../Header/Header';
 import './Home.css';
 
@@ -52,7 +53,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
+            <Cart></Cart>
             <div className="books">
                 <div className="container">
                     <div className="text-center" id="spinner" style={{'display':'none'}}>

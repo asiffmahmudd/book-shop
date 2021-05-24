@@ -12,37 +12,40 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Checkout from './Components/Checkout/Checkout';
 import Orders from './Components/Orders/Orders';
 import { AuthProvider } from './Context/AuthContext';
+import { CartProvider } from './Context/CartContext';
 
 
 function App() {
 
   return (
     <AuthProvider>
-      <Router>
-        <Switch>
-          <Route path="/home">
-            <Home></Home>
-          </Route>
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
-          <Route path="/login">
-            <Login></Login>
-          </Route>
-          <Route path="/signup">
-            <SignUp></SignUp>
-          </Route>
-          <PrivateRoute path="/admin">
-            <Admin></Admin>
-          </PrivateRoute>
-          <PrivateRoute path="/checkout/:id">
-            <Checkout></Checkout>
-          </PrivateRoute>
-          <PrivateRoute path="/orders">
-            <Orders></Orders>
-          </PrivateRoute>
-        </Switch>
-      </Router>
+      <CartProvider>
+        <Router>
+          <Switch>
+            <Route path="/home">
+              <Home></Home>
+            </Route>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <Route path="/signup">
+              <SignUp></SignUp>
+            </Route>
+            <PrivateRoute path="/admin">
+              <Admin></Admin>
+            </PrivateRoute>
+            <PrivateRoute path="/checkout/:id">
+              <Checkout></Checkout>
+            </PrivateRoute>
+            <PrivateRoute path="/orders">
+              <Orders></Orders>
+            </PrivateRoute>
+          </Switch>
+        </Router>
+      </CartProvider>
     </AuthProvider>
     
   );

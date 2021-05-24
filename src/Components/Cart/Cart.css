@@ -1,0 +1,26 @@
+body{
+    position: relative;
+}
+
+.cart{
+    position: fixed;
+    top: 50%;
+    right: 0;
+}
+
+.cart-container{
+    position: relative;
+}
+
+span.cart-number {
+    font-size: 9px;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 3px 5px;
+    background: red;
+    position: absolute;
+    right: -10px;
+    top: -7px;
+}
+
