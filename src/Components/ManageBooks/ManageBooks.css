@@ -72,3 +72,7 @@
 	.manage-books td:nth-of-type(3):before { content: "Price"; }
 	.manage-books td:nth-of-type(4):before { content: "Action"; }
 }
+
+.manage-books .edit, .manage-books .delete{
+	cursor: pointer;
+}

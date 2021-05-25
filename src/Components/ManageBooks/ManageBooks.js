@@ -3,12 +3,14 @@ import { useState } from 'react';
 import './ManageBooks.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import ModalCs from './ModalCs';
 
 const ManageBooks = () => {
-
+    const [modalShow, setModalShow] = useState(false);
     const [books, setBooks] = useState([]);
     const [change, setChange] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [bookInfo, setBookInfo] = useState();
 
     useEffect(() => {
         setLoading(true);
@@ -19,26 +21,27 @@ const ManageBooks = () => {
             setBooks(data);
             document.getElementById('spinner').style.display = 'none';
             setLoading(false);
-            console.log(data);
         })
     }, [change])
 
     const handleDelete = (id) => {
-        setChange(false);
-        document.getElementById('spinner').style.display = 'block';
-        fetch(`https://book--shop.herokuapp.com/book/${id}`,{
-            method: 'DELETE'
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data){
-                setChange(true);
-                document.getElementById('spinner').style.display = 'none';
-                alert("Book deleted successfully");
-            }
-        })
+        let confirmation = window.confirm("Are you sure you want to delete this book?");
+        if(confirmation){
+            setChange(false);
+            document.getElementById('spinner').style.display = 'block';
+            fetch(`https://book--shop.herokuapp.com/book/${id}`,{
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data){
+                    setChange(true);
+                    document.getElementById('spinner').style.display = 'none';
+                    alert("Book deleted successfully");
+                }
+            })
+        }
     }
-    
 
     return (
         <div className="manage-books mb-5">
@@ -75,7 +78,10 @@ const ManageBooks = () => {
                                             <td>{book.book.name}</td>
                                             <td>{book.book.author}</td>
                                             <td>${book.book.price}</td>
-                                            <td><span className="edit mr-3"><FontAwesomeIcon icon={faEdit} color="white"/></span> <span onClick={() => handleDelete(book._id)} className="delete"><FontAwesomeIcon icon={faTrashAlt} color="white"/></span></td>
+                                            <td>
+                                                <span className="edit mr-3" onClick={() => {setModalShow(true); setBookInfo(book)}}><FontAwesomeIcon icon={faEdit} color="white"/></span> 
+                                                <span onClick={() => handleDelete(book._id)} className="delete"><FontAwesomeIcon icon={faTrashAlt} color="white"/></span>
+                                            </td>
                                         </tr>
                                     );
                                 })
@@ -86,6 +92,7 @@ const ManageBooks = () => {
                 </div>
             }
            </div>
+           <ModalCs show={modalShow} bookInfo={bookInfo} onHide={() => setModalShow(false)}></ModalCs>
         </div>
     );
 };
