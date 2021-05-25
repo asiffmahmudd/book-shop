@@ -11,7 +11,7 @@ form input::placeholder{
     font-weight: 700;
 }
 
-form #email, form #password, form #confirmPassword, form #name{
+.login form #email, .login form #password, .login form #confirmPassword, .login form #name{
     padding: 0;
 }
 
