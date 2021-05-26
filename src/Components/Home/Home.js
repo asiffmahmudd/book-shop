@@ -10,6 +10,7 @@ const Home = () => {
     const [books, setBooks] = useState([]);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(false);
+    const [addingBooks, setAddingBooks] = useState(false);
 
     const handleSearch = (event) => {
         setSearch(event.target.value);
@@ -48,10 +49,13 @@ const Home = () => {
         element.style.display = 'block';
         element.classList.add('cart-animation-img')
 
+        setAddingBooks(true)
         setTimeout(() => {
             element.style.display = 'none';
             element.classList.remove('cart-animation-img')
-        },1200)
+            setAddingBooks(false)
+        },999)
+        
 
         let alreadyExists = false;
         let l = cartProducts.length;
@@ -98,7 +102,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <img src={animationImage} id={"animation-img"}  style={{display: "none"}} alt="" />
+                        <img src={animationImage} id={"animation-img"}   alt="" />
                         {
                             !loading && books.length === 0 &&
                             <h1 className="col-md-12 text-center mt-5">Sorry, No book found</h1>
@@ -106,7 +110,7 @@ const Home = () => {
                     
                         {
                             
-                            books.map(book => <Book book={book} addItem={addItem} animationImage={animationImage} key={book._id}></Book>)
+                            books.map(book => <Book book={book} addingBooks={addingBooks} addItem={addItem} animationImage={animationImage} key={book._id}></Book>)
                         }
                     </div>
                 </div>

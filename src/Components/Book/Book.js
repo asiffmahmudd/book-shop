@@ -5,7 +5,8 @@ import Fade from 'react-reveal/Fade';
 
 const Book = (props) => {
     const {name, author, price, image} = props.book.book;
-    const addItem = props.addItem
+    const addItem = props.addItem;
+    const addingBooks = props.addingBooks;
     
     return (
         <Fade bottom cascade> 
@@ -20,7 +21,7 @@ const Book = (props) => {
                         <small className="card-text mb-2 d-block">{author}</small>
                         <div className="price-buy">
                             <span className="text-slateblue">${price}</span>
-                            <button onClick={() => addItem(props.book)} className="btn buy-btn float-right">Add to Cart</button>
+                            <button disabled={addingBooks?true:false} onClick={() => addItem(props.book)} className="btn buy-btn float-right">Add to Cart</button>
                         </div>
                         
                     </div>
