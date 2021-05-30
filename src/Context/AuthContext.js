@@ -21,6 +21,31 @@ export function AuthProvider({children}) {
         return auth.signInWithPopup(provider)
     }
 
+    async function signUpWithEmail(userData){
+        await auth.createUserWithEmailAndPassword(userData.email, userData.password)
+        var user = firebase.auth().currentUser;
+        await user.updateProfile({
+            displayName: userData.name
+        })
+        
+        auth.onAuthStateChanged(user => {
+            let currentUser;
+            if(user){
+                currentUser = {
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL
+                }
+            }
+            setLoggedInUser(currentUser);
+            setLoading(false);
+        })
+    }
+
+    function signInWithEmail(user){
+        return auth.signInWithEmailAndPassword(user.email, user.password);
+    }
+
     function logout(){
         return auth.signOut();
     }
@@ -43,7 +68,7 @@ export function AuthProvider({children}) {
     },[])
 
     const value = {
-        loggedInUser,loginWith,logout
+        loggedInUser,loginWith,logout, signInWithEmail, signUpWithEmail
     }
 
     return (

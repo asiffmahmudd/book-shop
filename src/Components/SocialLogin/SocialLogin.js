@@ -14,8 +14,13 @@ const SocialLogin = () => {
     let { from } = location.state || { from: { pathname: "/" } };
 
     async function handleSignIn(media) {
-        await loginWith(media);
-        history.replace(from)
+        try{
+            await loginWith(media);
+            history.replace(from)
+        }
+        catch(e){
+            alert(e.message)
+        }
     }
 
     return (
