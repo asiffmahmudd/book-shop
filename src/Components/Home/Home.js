@@ -94,7 +94,7 @@ const Home = () => {
                 </div>
             </div>
             <Cart></Cart>
-            <div className="books">
+            <div className="books pb-5">
                 <div className="container">
                     <div className="text-center" id="spinner" style={{'display':'none'}}>
                         <div className="spinner-border text-slateblue" role="status">

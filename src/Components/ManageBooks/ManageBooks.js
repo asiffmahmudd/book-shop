@@ -92,7 +92,7 @@ const ManageBooks = () => {
                 </div>
             }
            </div>
-           <ModalCs show={modalShow} bookInfo={bookInfo} onHide={() => setModalShow(false)}></ModalCs>
+           <ModalCs show={modalShow} setChange={setChange} bookInfo={bookInfo} onHide={() => setModalShow(false)}></ModalCs>
         </div>
     );
 };

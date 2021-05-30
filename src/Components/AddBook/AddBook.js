@@ -8,6 +8,7 @@ const AddBook = () => {
 
     const { register, handleSubmit, reset } = useForm();
     const [fileError, setFileError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const onSubmit = data => {
         if(data.photo[0].type === "image/jpeg" || data.photo[0].type === "image/png"){
@@ -16,6 +17,7 @@ const AddBook = () => {
             imageData.set('key', '0c9c52f3c2c70e376333024c7dd177e2');
             imageData.append('image', data.photo[0]);
             document.getElementById('spinner').style.display = 'block';
+            setLoading(true)
 
             fetch('https://api.imgbb.com/1/upload', {
                 method: 'POST',
@@ -52,6 +54,7 @@ const AddBook = () => {
         .then(data => {
             if(data){
                 document.getElementById('spinner').style.display = 'none';
+                setLoading(false)
                 alert("Book added successfully");
                 reset();
             }
@@ -90,7 +93,7 @@ const AddBook = () => {
                         </div>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-submit float-right">Submit</button>
+                <button type="submit" className="btn btn-submit float-right" disabled={loading? true: false}>Submit</button>
             </form>
             <div className="text-center" id="spinner" style={{'display':'none'}}>
                 <div className="spinner-border text-slateblue" role="status">

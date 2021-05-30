@@ -12,8 +12,12 @@ export function AuthProvider({children}) {
     const [loggedInUser, setLoggedInUser] = useState();
     const [loading, setLoading] = useState(true);
 
-    function loginWith(){
-        var provider = new firebase.auth.GoogleAuthProvider();
+    function loginWith(media){
+        let provider;
+        if(media === 'google')
+            provider = new firebase.auth.GoogleAuthProvider();
+        else if(media === 'facebook')
+            provider = new firebase.auth.FacebookAuthProvider();
         return auth.signInWithPopup(provider)
     }
 

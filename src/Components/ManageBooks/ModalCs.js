@@ -1,9 +1,9 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal'
-import AddBook from '../AddBook/AddBook';
+import EditBook from './EditBook';
 
 const ModalCs = (props) => {
-    console.log(props)
+    
     return (
         <>
         <Modal
@@ -18,7 +18,7 @@ const ModalCs = (props) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <AddBook></AddBook>
+                <EditBook bookInfo={props.bookInfo} onHide={props.onHide} setChange={props.setChange}></EditBook>
             </Modal.Body>
         </Modal>
         </>

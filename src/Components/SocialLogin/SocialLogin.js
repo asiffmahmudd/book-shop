@@ -13,8 +13,8 @@ const SocialLogin = () => {
 
     let { from } = location.state || { from: { pathname: "/" } };
 
-    async function handleSignIn() {
-        await loginWith();
+    async function handleSignIn(media) {
+        await loginWith(media);
         history.replace(from)
     }
 
@@ -28,14 +28,14 @@ const SocialLogin = () => {
             </div>
 
             <div className="col-md-12">
-                <div className="col-md-4 mx-auto border facebook">
+                <div className="col-md-4 mx-auto border facebook" onClick={() => handleSignIn("facebook")}>
                     <img src={facebook} alt=""/>
                     <p className="text-center">Continue with Facebook</p>
                 </div>
             </div>
 
             <div className="col-md-12 mt-2">
-                <div className="col-md-4 mx-auto border google" onClick={handleSignIn}>
+                <div className="col-md-4 mx-auto border google" onClick={() => handleSignIn("google")}>
                     <img src={google} alt=""/>
                     <p className="text-center">Continue with Google</p>
                 </div>
