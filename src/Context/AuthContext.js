@@ -50,10 +50,23 @@ export function AuthProvider({children}) {
         return auth.signOut();
     }
 
+    function saveToken(){
+        return firebase.auth().currentUser.getIdToken(true)
+            .then(function(idToken) {
+            return idToken;
+        }).catch(function(error) {
+            alert(error.message);
+        });
+    }
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             let currentUser;
             if(user){
+                saveToken()
+                .then(idToken => {
+                    localStorage.setItem('token', idToken)
+                })
                 currentUser = {
                     name: user.displayName,
                     email: user.email,
@@ -68,7 +81,7 @@ export function AuthProvider({children}) {
     },[])
 
     const value = {
-        loggedInUser,loginWith,logout, signInWithEmail, signUpWithEmail
+        loggedInUser,loginWith,logout, signInWithEmail, signUpWithEmail, saveToken
     }
 
     return (

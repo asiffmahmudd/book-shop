@@ -13,12 +13,23 @@ const Orders = () => {
     useEffect(() => {
         setLoading(true);
         document.getElementById('spinner').style.display = 'block';
-        fetch(`https://book--shop.herokuapp.com/orders/${loggedInUser.email}`)
+        fetch(`https://book--shop.herokuapp.com/orders/${loggedInUser.email}`,{
+            method: 'GET',
+            headers: { 
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
         .then(res => res.json())
         .then(data => {
             setLoading(false);
             document.getElementById('spinner').style.display = 'none';
             setOrders(data);
+        })
+        .catch(e => {
+            alert(e.message)
+            setLoading(false);
+            document.getElementById('spinner').style.display = 'none';
         })
     }, [loggedInUser.email])
 

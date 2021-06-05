@@ -7,7 +7,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import { useAuth } from '../../Context/AuthContext';
 
 const Login = () => {
-    const {signInWithEmail} = useAuth()
+    const {signInWithEmail, saveToken} = useAuth()
     const { register, handleSubmit } = useForm();
 
     let history = useHistory();
@@ -18,8 +18,12 @@ const Login = () => {
         try{
             document.getElementById('spinner').style.display = 'block';
             await signInWithEmail(data)
-            document.getElementById('spinner').style.display = 'none';
-            history.replace(from)
+            saveToken()
+            .then(idToken => {
+                localStorage.setItem('token', idToken);
+                document.getElementById('spinner').style.display = 'none';
+                history.replace(from)
+            })
         }
         catch(e){
             alert(e.message)
